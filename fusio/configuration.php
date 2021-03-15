@@ -137,16 +137,16 @@ return [
 
     // A closure which returns a doctrine cache implementation. If null the
     // filesystem cache is used
-    'psx_cache_factory'       => function($config, $namespace){
-        $memcached = new \Memcached();
-        $memcached->addServer(getenv('FUSIO_MEMCACHE_HOST'), getenv('FUSIO_MEMCACHE_PORT'));
+    // 'psx_cache_factory'       => function($config, $namespace){
+    //     $memcached = new \Memcached();
+    //     $memcached->addServer(getenv('FUSIO_MEMCACHE_HOST'), getenv('FUSIO_MEMCACHE_PORT'));
 
-        $memcache = new \Doctrine\Common\Cache\MemcachedCache();
-        $memcache->setMemcached($memcached);
-        $memcache->setNamespace($namespace);
+    //     $memcache = new \Doctrine\Common\Cache\MemcachedCache();
+    //     $memcache->setMemcached($memcached);
+    //     $memcache->setNamespace($namespace);
 
-        return $memcache;
-    },
+    //     return $memcache;
+    // },
 
     // Specify a specific log level
     //'psx_log_level' => \Monolog\Logger::ERROR,

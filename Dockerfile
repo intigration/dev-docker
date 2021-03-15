@@ -1,22 +1,22 @@
 FROM ubuntu:bionic
-MAINTAINER Christoph Kappestein <christoph.kappestein@apioo.de>
+MAINTAINER muhammad.farhan
 LABEL version="1.0"
-LABEL description="Fusio API management"
+LABEL description="M3Dev"
 
-# env
+
 ENV FUSIO_PROJECT_KEY "42eec18ffdbffc9fda6110dcc705d6ce"
-ENV FUSIO_HOST "acme.com"
-ENV FUSIO_URL "http://acme.com"
-ENV FUSIO_APPS_URL "http://apps.acme.com"
+ENV FUSIO_HOST "0.0.0.0"
+ENV FUSIO_URL "http://0.0.0.0"
+ENV FUSIO_APPS_URL "http://0.0.0.0/apps"
 ENV FUSIO_ENV "prod"
-ENV FUSIO_DB_NAME "fusio"
-ENV FUSIO_DB_USER "fusio"
-ENV FUSIO_DB_PW "61ad6c605975"
-ENV FUSIO_DB_HOST "localhost"
+ENV FUSIO_DB_NAME "m3db"
+ENV FUSIO_DB_USER "dbuser"
+ENV FUSIO_DB_PW "dbpassword"
+ENV FUSIO_DB_HOST "localhost:3306"
 
-ENV FUSIO_BACKEND_USER "demo"
-ENV FUSIO_BACKEND_EMAIL "demo@fusio-project.org"
-ENV FUSIO_BACKEND_PW "75dafcb12c4f"
+ENV FUSIO_BACKEND_USER "m3dev"
+ENV FUSIO_BACKEND_EMAIL "m3dev@m3dev.com"
+ENV FUSIO_BACKEND_PW "password"
 
 ENV PROVIDER_FACEBOOK_KEY ""
 ENV PROVIDER_FACEBOOK_SECRET ""
@@ -132,6 +132,6 @@ RUN service memcached start
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
 
-EXPOSE 8080
+EXPOSE 80
 
 ENTRYPOINT ["/docker-entrypoint.sh"]

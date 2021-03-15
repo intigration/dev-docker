@@ -1,17 +1,17 @@
 version: '2'
 services:
-  # Fusio container
+  # M3dev container
   fusio:
-    image: fusio/fusio
+    image: intigration/dev
     environment:
       FUSIO_PROJECT_KEY: "42eec18ffdbffc9fda6110dcc705d6ce"
-      FUSIO_HOST: "acme.com"
-      FUSIO_URL: "http://acme.com"
-      FUSIO_APPS_URL: "http://apps.acme.com"
+      FUSIO_HOST: "0.0.0.0"
+      FUSIO_URL: "http://0.0.0.0"
+      FUSIO_APPS_URL: "http://0.0.0.0/apps"
       FUSIO_ENV: "prod"
-      FUSIO_DB_NAME: "fusio"
-      FUSIO_DB_USER: "fusio"
-      FUSIO_DB_PW: "61ad6c605975"
+      FUSIO_DB_NAME: "m3db"
+      FUSIO_DB_USER: "dbuser"
+      FUSIO_DB_PW: "dbpassword"
       FUSIO_DB_HOST: "mysql_fusio"
       FUSIO_BACKEND_USER: "demo"
       FUSIO_BACKEND_EMAIL: "demo@fusio-project.org"
@@ -28,7 +28,7 @@ services:
     links:
       - mysql_fusio
     ports:
-      - "80:8080"
+      - "80:80"
     volumes:
       - ./apps:/var/www/html/fusio/apps
       - ./public:/var/www/html/fusio/public
@@ -38,8 +38,8 @@ services:
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: "7f3e5186032a"
-      MYSQL_USER: "fusio"
-      MYSQL_PASSWORD: "61ad6c605975"
-      MYSQL_DATABASE: "fusio"
+      MYSQL_USER: "dbuser"
+      MYSQL_PASSWORD: "dbpassword"
+      MYSQL_DATABASE: "m3db"
     volumes:
       - ./db:/var/lib/mysql
